@@ -1,12 +1,14 @@
 #include <QtWidgets>
 
 #include "mainwindow.h"
+#include "Controller/keyinputcontroller.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
     setupFileMenu();
     setupHelpMenu();
     setupEditor();
+    setupControllers();
 
     setCentralWidget(editor);
     setWindowTitle(tr("Ivy IDE"));
@@ -35,6 +37,10 @@ void MainWindow::openFile(const QString &path)
         if (file.open(QFile::ReadOnly | QFile::Text))
             editor->setPlainText(file.readAll());
     }
+}
+
+void MainWindow::defaultKeyPressEvent(QKeyEvent *event){
+    QMainWindow::keyPressEvent(event);
 }
 
 void MainWindow::setupEditor()
@@ -88,3 +94,12 @@ void MainWindow::setupHelpMenu()
 
     helpMenu->addAction(tr("&About"), this, SLOT(about()));
 }
+
+void MainWindow::setupControllers(){
+    keyInputController = new KeyInputController(this);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent* event){
+    keyInputController->handleKeyPressEvent(event);
+}
+
