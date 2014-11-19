@@ -3,7 +3,7 @@
 
 #include "syntaxhighlighter.h"
 #include "codeeditor.h"
-class KeyInputController;
+#include "keyinputcontroller.h"
 #include <QMainWindow>
 
 class QTextEdit;

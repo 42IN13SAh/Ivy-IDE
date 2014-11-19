@@ -1,7 +1,7 @@
 #include <QtWidgets>
 
 #include "mainwindow.h"
-#include "Controller/keyinputcontroller.h"
+#include "keyinputcontroller.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {

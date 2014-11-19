@@ -1,9 +1,8 @@
 #ifndef KEYINPUTCONTROLLER_H
 #define KEYINPUTCONTROLLER_H
+#include <QKeyEvent>
+class MainWindow;
 
-//#include <QMainWindow>
-//class MainWindow;
-#include "View/mainwindow.h"
 
 class KeyInputController
 {
