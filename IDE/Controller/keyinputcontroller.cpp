@@ -1,4 +1,5 @@
 #include <QDebug>
+#include <QLibrary>
 
 #include "keyinputcontroller.h"
 #include "mainwindow.h"
@@ -6,6 +7,7 @@
 KeyInputController::KeyInputController(MainWindow *window)
 {
     this->source = window;
+
 }
 
 /**
@@ -19,7 +21,16 @@ KeyInputController::KeyInputController(MainWindow *window)
 void KeyInputController::handleKeyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_F6){
         //F6 was pressed, start compiling
-     //   Tokenizer *t = new Tokenizer();
+        QLibrary tokenizer("../IDE/Compiler.dll");
+        tokenizer.load();
+        if(tokenizer.isLoaded()){
+            qDebug() << "Success! Compiler DLL library is now loaded!";
+
+        }else{
+            qDebug() << "Failed to load tokenizer.dll";
+            qDebug() << tokenizer.errorString();
+        }
+
         //TODO: call compile function bellow
         qDebug() << "F6 keyevent detected, calling compile function..";
     }else{
