@@ -8,9 +8,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     setupFileMenu();
     setupHelpMenu();
     setupEditor();
+    setupButtonBar();
     setupControllers();
 
-    setCentralWidget(editor);
+    QBoxLayout *layout = new QBoxLayout(QBoxLayout::TopToBottom);
+    layout->addWidget(buttonBar);
+    layout->addWidget(editor);
+
+    layout->setSpacing(0);
+
+    QWidget *window = new QWidget();
+    window->setLayout(layout);
+
+    setCentralWidget(window);
+    centralWidget()->layout()->setContentsMargins(0, 0, 0, 0);
+
     setWindowTitle(tr("Ivy IDE"));
 }
 
@@ -53,6 +65,7 @@ void MainWindow::setupEditor()
 
     editor = new CodeEditor(this);
     editor->setFont(font);
+    editor->setFrameStyle(QFrame::NoFrame);
 
     const int tabStop = 4;  // 4 characters
 
@@ -75,6 +88,11 @@ void MainWindow::setupEditor()
     //QFile file("mainwindow.h");
     //if (file.open(QFile::ReadOnly | QFile::Text))
         //editor->setPlainText(file.readAll());
+}
+
+void MainWindow::setupButtonBar()
+{
+    buttonBar = new ButtonBar(this);
 }
 
 void MainWindow::setupFileMenu()

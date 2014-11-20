@@ -4,6 +4,8 @@
 #include "syntaxhighlighter.h"
 #include "codeeditor.h"
 #include "keyinputcontroller.h"
+#include "buttonbar.h"
+
 #include <QMainWindow>
 
 class QTextEdit;
@@ -23,12 +25,14 @@ public slots:
 
 private:
     void setupEditor();
+    void setupButtonBar();
     void setupFileMenu();
     void setupHelpMenu();
     void setupControllers();
 
     CodeEditor *editor;
     Highlighter *highlighter;
+    ButtonBar *buttonBar;
     KeyInputController *keyInputController;
 
 protected:

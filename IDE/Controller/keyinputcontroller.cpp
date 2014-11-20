@@ -19,7 +19,7 @@ KeyInputController::KeyInputController(MainWindow *window)
 void KeyInputController::handleKeyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_F6){
         //F6 was pressed, start compiling
-        Tokenizer *t = new Tokenizer();
+     //   Tokenizer *t = new Tokenizer();
         //TODO: call compile function bellow
         qDebug() << "F6 keyevent detected, calling compile function..";
     }else{

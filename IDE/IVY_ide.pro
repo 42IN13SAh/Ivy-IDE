@@ -3,13 +3,15 @@ QT += widgets
 HEADERS     = View/mainwindow.h \
               View/codeeditor.h \
               View/syntaxhighlighter.h \
-    Controller/keyinputcontroller.h
+    Controller/keyinputcontroller.h \
+    View/buttonbar.h
 
 SOURCES     = View/mainwindow.cpp \
               main.cpp \
               View/codeeditor.cpp \
               View/syntaxhighlighter.cpp \
-    Controller/keyinputcontroller.cpp
+    Controller/keyinputcontroller.cpp \
+    View/buttonbar.cpp
 # install
 target.path = $$[QT_INSTALL_EXAMPLES]/widgets/widgets/codeeditor
 target.path = $$[QT_INSTALL_EXAMPLES]/widgets/richtext/syntaxhighlighter
@@ -70,6 +72,9 @@ else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += "$$PWD/../../Ivy/
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += "$$PWD/../../Ivy/Project Ivy/release/Virtual Machine.lib"
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += "$$PWD/../../Ivy/Project Ivy/debug/Virtual Machine.lib"
 else:unix: PRE_TARGETDEPS += "$$PWD/../../Ivy/Project Ivy/libVirtual Machine.a"
+
+RESOURCES += \
+    Resources.qrc
 
 
 
