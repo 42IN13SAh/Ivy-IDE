@@ -1,5 +1,5 @@
 #include <QtWidgets>
-
+#include <QBoxLayout>
 #include "mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
@@ -7,15 +7,31 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     setupFileMenu();
     setupHelpMenu();
     setupEditor();
+    setupButtonBar();
 
-    setCentralWidget(editor);
+    QBoxLayout *layout = new QBoxLayout(QBoxLayout::TopToBottom);
+    layout->addWidget(buttonBar);
+    layout->addWidget(editor);
+
+    layout->setSpacing(0);
+
+    QWidget *window = new QWidget();
+    window->setLayout(layout);
+
+    setCentralWidget(window);
+    centralWidget()->layout()->setContentsMargins(0, 0, 0, 0);
+
     setWindowTitle(tr("Ivy IDE"));
 }
 
 void MainWindow::about()
 {
-    QMessageBox::about(this, tr("About Ivy IDE"),
-                tr("<p>This is the <b>Ivy IDE</b> created by Tim van de Burgt</p>"));
+    QMessageBox::about(this, tr("About Ivy IDE"), tr("<p>This is the <b>Ivy IDE</b> created by 42IN14SAh</p>"));
+}
+
+void MainWindow::setupButtonBar()
+{
+    buttonBar = new ButtonBar(this);
 }
 
 void MainWindow::newFile()
@@ -47,6 +63,7 @@ void MainWindow::setupEditor()
 
     editor = new CodeEditor(this);
     editor->setFont(font);
+    editor->setFrameStyle(QFrame::NoFrame);
 
     const int tabStop = 4;  // 4 characters
 
