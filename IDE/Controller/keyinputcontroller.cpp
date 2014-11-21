@@ -20,19 +20,8 @@ KeyInputController::KeyInputController(MainWindow *window)
  */
 void KeyInputController::handleKeyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_F6){
-        //F6 was pressed, start compiling
-        QLibrary tokenizer("../IDE/Compiler.dll");
-        tokenizer.load();
-        if(tokenizer.isLoaded()){
-            qDebug() << "Success! Compiler DLL library is now loaded!";
-
-        }else{
-            qDebug() << "Failed to load tokenizer.dll";
-            qDebug() << tokenizer.errorString();
-        }
-
-        //TODO: call compile function bellow
         qDebug() << "F6 keyevent detected, calling compile function..";
+        startCompiling();
     }else{
         //No shortcut(s) found; pass the event to the base class to continue default behaviour
         source->defaultKeyPressEvent(event);

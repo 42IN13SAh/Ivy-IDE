@@ -1,10 +1,12 @@
 #ifndef KEYINPUTCONTROLLER_H
 #define KEYINPUTCONTROLLER_H
 #include <QKeyEvent>
+
+#include "basecontroller.h"
 class MainWindow;
 
 
-class KeyInputController
+class KeyInputController : public BaseController
 {
 public:
     KeyInputController(MainWindow *window);

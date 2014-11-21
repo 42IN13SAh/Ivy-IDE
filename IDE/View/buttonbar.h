@@ -4,13 +4,13 @@
 #include <QWidget>
 #include <QPushButton>
 
+#include "buttoncontroller.h"
+
 class ButtonBar : public QWidget
 {
     Q_OBJECT
 public:
     explicit ButtonBar(QWidget *parent = 0);
-
-signals:
 
 private slots:
     void runButtonClicked();
@@ -19,6 +19,7 @@ private slots:
 private:
     QPushButton *runButton;
     QPushButton *buildButton;
+    ButtonController *controller;
 };
 
 #endif // BUTTONBAR_H
