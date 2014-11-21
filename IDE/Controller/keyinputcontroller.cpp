@@ -12,7 +12,7 @@ KeyInputController::KeyInputController(MainWindow *window)
 
 /**
  *  Supproted Keystrokes:
- *      - F6 - NOTHING
+ *      - F6 - Start tokenizing & compiling
  *      -
  *
  *  @brief KeyInputController::handleKeyPressEvent Handles all key-presses that have non-default behaviour
@@ -21,6 +21,7 @@ KeyInputController::KeyInputController(MainWindow *window)
 void KeyInputController::handleKeyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_F6){
         qDebug() << "F6 keyevent detected, calling compile function..";
+        startTokenizing();
         startCompiling();
     }else{
         //No shortcut(s) found; pass the event to the base class to continue default behaviour
