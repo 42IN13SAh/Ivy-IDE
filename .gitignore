@@ -8,6 +8,9 @@
 *.lai
 *.so
 *.dll
+!Tokenizer.dll
+!Compiler.dll
+!Virtual Machine.dll
 *.dylib
 
 # Qt-es
