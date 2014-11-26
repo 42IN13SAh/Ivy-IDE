@@ -11,7 +11,6 @@ BottomBar::BottomBar(QWidget *parent) :
 {
     //console
     textArea = new QTextEdit();
-    textArea->setReadOnly(true);
     this->addTab(textArea, "Console");
 
     //errorlist
