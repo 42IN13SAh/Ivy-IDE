@@ -1,5 +1,5 @@
 #include <QtWidgets>
-
+#include <QBoxLayout>
 #include "mainwindow.h"
 #include "keyinputcontroller.h"
 
@@ -9,11 +9,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     setupHelpMenu();
     setupEditor();
     setupButtonBar();
+    setupBottomBar();
     setupControllers();
 
     QBoxLayout *layout = new QBoxLayout(QBoxLayout::TopToBottom);
     layout->addWidget(buttonBar);
     layout->addWidget(editor);
+    layout->addWidget(bottomBar);
 
     layout->setSpacing(0);
 
@@ -28,8 +30,17 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 
 void MainWindow::about()
 {
-    QMessageBox::about(this, tr("About Ivy IDE"),
-                tr("<p>This is the <b>Ivy IDE</b> created by Tim van de Burgt</p>"));
+    QMessageBox::about(this, tr("About Ivy IDE"), tr("<p>This is the <b>Ivy IDE</b> created by 42IN14SAh</p>"));
+}
+
+void MainWindow::setupButtonBar()
+{
+    buttonBar = new ButtonBar(this);
+}
+
+void MainWindow::setupBottomBar()
+{
+    bottomBar = new BottomBar(this);
 }
 
 void MainWindow::newFile()
@@ -88,11 +99,6 @@ void MainWindow::setupEditor()
     //QFile file("mainwindow.h");
     //if (file.open(QFile::ReadOnly | QFile::Text))
         //editor->setPlainText(file.readAll());
-}
-
-void MainWindow::setupButtonBar()
-{
-    buttonBar = new ButtonBar(this);
 }
 
 void MainWindow::setupFileMenu()

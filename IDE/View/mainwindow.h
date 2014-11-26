@@ -5,6 +5,7 @@
 #include "codeeditor.h"
 #include "keyinputcontroller.h"
 #include "buttonbar.h"
+#include "bottombar.h"
 
 #include <QMainWindow>
 
@@ -26,6 +27,7 @@ public slots:
 private:
     void setupEditor();
     void setupButtonBar();
+    void setupBottomBar();
     void setupFileMenu();
     void setupHelpMenu();
     void setupControllers();
@@ -33,6 +35,7 @@ private:
     CodeEditor *editor;
     Highlighter *highlighter;
     ButtonBar *buttonBar;
+    BottomBar *bottomBar;
     KeyInputController *keyInputController;
 
 protected:

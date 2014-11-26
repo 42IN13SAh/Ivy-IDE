@@ -11,7 +11,6 @@ class QWidget;
 
 class LineNumberArea;
 
-
 class CodeEditor : public QPlainTextEdit
 {
     Q_OBJECT
@@ -21,6 +20,7 @@ public:
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
+    void setCursorOnLine(int lineNumber);
 
 protected:
     void resizeEvent(QResizeEvent *event);

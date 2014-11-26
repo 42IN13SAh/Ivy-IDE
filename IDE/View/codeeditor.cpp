@@ -13,8 +13,6 @@ CodeEditor::CodeEditor(QWidget *parent) : QPlainTextEdit(parent)
     highlightCurrentLine();
 }
 
-
-
 int CodeEditor::lineNumberAreaWidth()
 {
     int digits = 6;
@@ -28,14 +26,10 @@ int CodeEditor::lineNumberAreaWidth()
     return space;
 }
 
-
-
 void CodeEditor::updateLineNumberAreaWidth(int /* newBlockCount */)
 {
     setViewportMargins(lineNumberAreaWidth(), 0, 0, 0);
 }
-
-
 
 void CodeEditor::updateLineNumberArea(const QRect &rect, int dy)
 {
@@ -48,8 +42,6 @@ void CodeEditor::updateLineNumberArea(const QRect &rect, int dy)
         updateLineNumberAreaWidth(0);
 }
 
-
-
 void CodeEditor::resizeEvent(QResizeEvent *e)
 {
     QPlainTextEdit::resizeEvent(e);
@@ -57,8 +49,6 @@ void CodeEditor::resizeEvent(QResizeEvent *e)
     QRect cr = contentsRect();
     lineNumberArea->setGeometry(QRect(cr.left(), cr.top(), lineNumberAreaWidth(), cr.height()));
 }
-
-
 
 void CodeEditor::highlightCurrentLine()
 {
@@ -79,8 +69,6 @@ void CodeEditor::highlightCurrentLine()
     setExtraSelections(extraSelections);
 }
 
-
-
 void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
 {
     QPainter painter(lineNumberArea);
@@ -89,7 +77,6 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
     QColor q2 = QColor();
     q2.setNamedColor("#247EAF");
     painter.fillRect(event->rect(), q);
-
 
     QTextBlock block = firstVisibleBlock();
     int blockNumber = block.blockNumber();
@@ -109,4 +96,11 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
         bottom = top + (int) blockBoundingRect(block).height();
         ++blockNumber;
     }
+}
+
+void CodeEditor::setCursorOnLine(int lineNumber)
+{
+    QTextCursor tmpCursor = this->textCursor();
+    tmpCursor.movePosition(QTextCursor::StartOfLine, QTextCursor::MoveAnchor, lineNumber);
+    this->setTextCursor(tmpCursor);
 }
