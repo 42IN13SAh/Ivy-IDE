@@ -8,10 +8,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     setupHelpMenu();
     setupEditor();
     setupButtonBar();
+    setupConsole();
 
     QBoxLayout *layout = new QBoxLayout(QBoxLayout::TopToBottom);
     layout->addWidget(buttonBar);
     layout->addWidget(editor);
+    layout->addWidget(console);
 
     layout->setSpacing(0);
 
@@ -32,6 +34,11 @@ void MainWindow::about()
 void MainWindow::setupButtonBar()
 {
     buttonBar = new ButtonBar(this);
+}
+
+void MainWindow::setupConsole()
+{
+    console = new BottomBar(this);
 }
 
 void MainWindow::newFile()

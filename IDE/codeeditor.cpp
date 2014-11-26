@@ -97,3 +97,10 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
         ++blockNumber;
     }
 }
+
+void CodeEditor::setCursorOnLine(int lineNumber)
+{
+    QTextCursor tmpCursor = this->textCursor();
+    tmpCursor.movePosition(QTextCursor::StartOfLine, QTextCursor::MoveAnchor, lineNumber);
+    this->setTextCursor(tmpCursor);
+}

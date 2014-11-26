@@ -4,6 +4,7 @@
 #include "syntaxhighlighter.h"
 #include "codeeditor.h"
 #include "buttonbar.h"
+#include "bottombar.h"
 
 #include <QMainWindow>
 
@@ -24,12 +25,14 @@ public slots:
 private:
     void setupEditor();
     void setupButtonBar();
+    void setupConsole();
     void setupFileMenu();
     void setupHelpMenu();
 
     CodeEditor *editor;
     Highlighter *highlighter;
     ButtonBar *buttonBar;
+    BottomBar *console;
 };
 
 #endif // MAINWINDOW_H
